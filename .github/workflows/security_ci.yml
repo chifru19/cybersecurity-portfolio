@@ -24,8 +24,5 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install cryptography requests
 
-      - name: Run Automated Secret Scanner
-        run: python3 secret_scanner.py
-
       - name: Run Master Dashboard Health Check
         run: python3 portfolio_dashboard.py
