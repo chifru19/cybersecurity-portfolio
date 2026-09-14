@@ -36,10 +36,10 @@ You can launch the interactive Streamlit dashboard locally by running:
 
 ## 🚀 DevSecOps & CI/CD Pipeline
 
-This repository implements automated continuous integration using **GitHub Actions**. On every push to the `main` branch, the pipeline:
-1. Provisions a clean Ubuntu environment with Python 3.12.
-2. Installs required security dependencies (`cryptography`, `requests`, `streamlit`).
-3. Executes automated health checks and verification scripts to ensure full repository integrity.
+This repository implements automated continuous integration using **GitHub Actions**. On every push or pull request to the `main` branch, the automated workflow:
+* Provisions a clean, isolated Ubuntu environment running Python 3.12 to guarantee compatibility and stability.
+* Upgrades pip and installs all required security dependencies (`cryptography`, `requests`, `streamlit`) specified for the tools.
+* Executes automated health checks and verification scripts (`portfolio_dashboard.py`) to ensure 100% repository integrity and successful project integration.
 
 ---
 
