@@ -78,3 +78,26 @@ st.sidebar.success("GitHub Actions CI/CD: Passing ✅")
 st.sidebar.markdown("---")
 st.sidebar.markdown("**Author:** Frank Fru")
 st.sidebar.markdown("[Website](https://frankfru.com) | [GitHub](https://github.com/chifru19)")
+
+import subprocess
+
+st.markdown("---")
+st.subheader("⚡ Live SecOps Sandbox Execution")
+
+col1, col2 = st.columns([2, 1])
+with col1:
+    target_input = st.text_input("Target URL / Host", "http://localhost:8501")
+with col2:
+    tool_choice = st.selectbox("Select Tool", ["scanner.py", "ssl_checker.py", "port_scanner.py"])
+
+if st.button("Execute Audit"):
+    with st.spinner(f"Running `{tool_choice}` against `{target_input}`..."):
+        try:
+            cmd = ["python3", tool_choice, target_input]
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=10, check=False)
+            output_text = result.stdout if result.stdout else result.stderr
+            st.code(output_text, language="bash")
+        except subprocess.TimeoutExpired:
+            st.error("Execution timed out (10s limit exceeded).")
+        except Exception as e:
+            st.error(f"Execution failed: {e}")
