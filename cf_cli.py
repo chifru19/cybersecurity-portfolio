@@ -3,6 +3,7 @@ import sys
 import requests
 
 API_BASE = "https://api.cloudflare.com/client/v4"
+CLOUDFLARE_API_TOKEN = os.getenv("CLOUDFLARE_API_TOKEN")
 
 def get_headers(token):
     return {
@@ -39,7 +40,7 @@ def deploy_rules(token, zone_ids):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Cloudflare Security Hardening CLI")
-    parser.add_argument("--token", required=True, help="Cloudflare API Token with WAF Write permissions")
+    parser.add_argument("--token", default=DEFAULT_TOKEN, help="Cloudflare API Token")
     parser.add_argument("--zones", required=True, nargs="+", help="Space-separated list of Cloudflare Zone IDs")
 
     args = parser.parse_args()
