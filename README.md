@@ -1,19 +1,16 @@
-# 🛡️ Cybersecurity & DevSecOps Portfolio
+# Cybersecurity & DevSecOps Engineering Portfolio
 
-[![Cybersecurity Portfolio CI](https://github.com/chifru19/cybersecurity-portfolio/actions/workflows/security_ci.yml/badge.svg)](https://github.com/chifru19/cybersecurity-portfolio/actions/workflows/security_ci.yml)
-[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-Welcome to my professional cybersecurity engineering and automation portfolio! This repository contains **10 production-grade Python tools** designed to automate security tasks, audit vulnerabilities, implement cryptography, and enforce DevSecOps best practices.
+Welcome to my professional cybersecurity engineering and automation portfolio! This repository contains 10 production-grade Python tools designed to automate security tasks, audit vulnerabilities, implement cryptography, and enforce DevSecOps best practices across both local environments and live production assets like **frankfru.com**.
 
 ---
 
-## 📊 Interactive Dashboard Preview
+## 📊 Interactive Command Center & Dashboard
 
-![Portfolio Dashboard](assets/dashboard.png)
-
-You can launch the interactive Streamlit dashboard locally by running:
-`streamlit run app.py`
+You can launch the interactive Streamlit command center locally:
+```bash
+streamlit run app.py
+```
+* **Live Execution Sandbox:** Features a built-in UI terminal executor allowing real-time tool triggering against target endpoints directly from the browser interface.
 
 ---
 
@@ -34,18 +31,27 @@ You can launch the interactive Streamlit dashboard locally by running:
 
 ---
 
-## 🚀 DevSecOps & CI/CD Pipeline
+## 🚀 Live Production Integration & Dogfooding (`frankfru.com`)
 
-This repository implements automated continuous integration using **GitHub Actions**. On every push or pull request to the `main` branch, the automated workflow:
-* Provisions a clean, isolated Ubuntu environment running Python 3.12 to guarantee compatibility and stability.
-* Upgrades pip and installs all required security dependencies (`cryptography`, `requests`, `streamlit`) specified for the tools.
-* Executes automated health checks and verification scripts (`portfolio_dashboard.py`) to ensure 100% repository integrity and successful project integration.
+Rather than operating in isolation, this toolchain is actively dogfooded against **frankfru.com**:
+* **Perimeter Audits:** Regular header hardening reviews (Content Security Policy, HSTS, X-Frame-Options) and transport reconnaissance.
+* **PKI Tracking:** Monitoring live TLS certificate expiration health to prevent unexpected downtime.
+* **Edge Mapping:** Verifying public Cloudflare edge ports (`80/443`).
 
 ---
 
-## 👤 Author
+## ⚙️ DevSecOps & CI/CD Pipelines
 
-* **Frank Fru**
+This repository implements automated continuous integration using GitHub Actions across two core workflows:
+1. **Repository Health CI (`security_ci.yml`):** Runs on every push or pull request to the `main` branch, provisioning an isolated Ubuntu environment running Python 3.12 to ensure 100% dependency compatibility and script execution integrity.
+2. **Production Watchdog (`prod-monitor.yml`):** Scheduled daily automation running security checks and telemetry against **frankfru.com**.
+
+---
+
+## 👤 Author & Contact
+
+* **Name:** Frank Fru
 * **Website:** [frankfru.com](https://frankfru.com)
 * **GitHub:** [chifru19](https://github.com/chifru19)
+* **LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/chifru19)
 * **Email:** chifru19@googlemail.com
