@@ -1,57 +1,42 @@
-# Cybersecurity & DevSecOps Engineering Portfolio
+# Cybersecurity Portfolio - Frank Fru
 
-Welcome to my professional cybersecurity engineering and automation portfolio! This repository contains 10 production-grade Python tools designed to automate security tasks, audit vulnerabilities, implement cryptography, and enforce DevSecOps best practices across both local environments and live production assets like **frankfru.com**.
+Welcome to my professional cybersecurity portfolio repository (`cybersecurity-portfolio`). This collection features **13 production-ready, modular Python security tools** designed for defensive auditing, vulnerability scanning, threat intelligence, and secure automation.
 
----
-
-## 📊 Interactive Command Center & Dashboard
-
-You can launch the interactive Streamlit command center locally:
-```bash
-streamlit run app.py
-```
-* **Live Execution Sandbox:** Features a built-in UI terminal executor allowing real-time tool triggering against target endpoints directly from the browser interface.
-
----
-
-## 🛠️ Project Inventory (10/10 Completed)
-
-| Project ID | Script Name | Description |
-| :--- | :--- | :--- |
-| **Project 1** | `scanner.py` | Web Application Vulnerability Scanner (Headers & Exposed Files) |
-| **Project 2** | `log_analyzer.py` | Log Analysis & Threat Detection (Brute-Force & Reconnaissance) |
-| **Project 3** | `file_encryptor.py` | Encrypted File Share & Secure Uploader (Fernet Symmetric Encryption) |
-| **Project 4** | `secret_scanner.py` | Automated Git Repository Secret Scanner (Regex Credential Leak Detector) |
-| **Project 5** | `port_scanner.py` | Network Port Scanner (Multi-threaded TCP Socket Mapper) |
-| **Project 6** | `phishing_simulator.py` | Phishing Awareness Simulation Tool (Educational Corporate Templates) |
-| **Project 7** | `jwt_auditor.py` | JWT Security Auditor (Misconfiguration & Signature Bypass Checker) |
-| **Project 8** | `ssl_checker.py` | SSL/TLS Certificate Expiration & Security Inspector |
-| **Project 9** | `password_checker.py` | Password Strength & Breach Checker (HIBP k-Anonymity API Integration) |
-| **Project 10** | `portfolio_dashboard.py` | Master Portfolio Summary & Health Dashboard (CLI & Streamlit Web App) |
-
----
-
-## 🚀 Live Production Integration & Dogfooding (`frankfru.com`)
-
-Rather than operating in isolation, this toolchain is actively dogfooded against **frankfru.com**:
-* **Perimeter Audits:** Regular header hardening reviews (Content Security Policy, HSTS, X-Frame-Options) and transport reconnaissance.
-* **PKI Tracking:** Monitoring live TLS certificate expiration health to prevent unexpected downtime.
-* **Edge Mapping:** Verifying public Cloudflare edge ports (`80/443`).
-
----
-
-## ⚙️ DevSecOps & CI/CD Pipelines
-
-This repository implements automated continuous integration using GitHub Actions across two core workflows:
-1. **Repository Health CI (`security_ci.yml`):** Runs on every push or pull request to the `main` branch, provisioning an isolated Ubuntu environment running Python 3.12 to ensure 100% dependency compatibility and script execution integrity.
-2. **Production Watchdog (`prod-monitor.yml`):** Scheduled daily automation running security checks and telemetry against **frankfru.com**.
-
----
-
-## 👤 Author & Contact
-
+## Author & Professional Links
 * **Name:** Frank Fru
+* **Email:** chifru19@googlemail.com
 * **Website:** [frankfru.com](https://frankfru.com)
 * **GitHub:** [chifru19](https://github.com/chifru19)
-* **LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/chifru19)
-* **Email:** chifru19@googlemail.com
+* **LinkedIn:** [Frank Fru LinkedIn](https://www.linkedin.com/in/frank-fru)
+
+---
+
+## Included Projects (13/13 Active)
+
+1. **`scanner.py`**: Web Application Vulnerability Scanner (HTTP security headers & exposed files).
+2. **`log_analyzer.py`**: Log Analysis & Threat Detection (Brute-force and reconnaissance parsing).
+3. **`file_encryptor.py`**: Encrypted File Share & Secure Uploader (Fernet symmetric encryption).
+4. **`secret_scanner.py`**: Automated Git Repository Secret Scanner (Regex-based leak detection).
+5. **`port_scanner.py`**: Network Port Scanner (Multi-threaded TCP socket mapper).
+6. **`phishing_simulator.py`**: Phishing Awareness Simulation Tool (Educational templates).
+7. **`jwt_auditor.py`**: JSON Web Token Security Auditor (Algorithm misconfiguration & bypass check).
+8. **`ssl_checker.py`**: SSL/TLS Certificate Expiration & Security Inspector.
+9. **`password_checker.py`**: Password Strength & Breach Checker (HaveIBeenPwned API integration).
+10. **`subdomain_scanner.py`**: Subdomain Enumerator (CRT.sh public records with multi-threaded resolution).
+11. **`s3_auditor.py`**: AWS S3 Storage Bucket Exposure & Access Control Auditor.
+12. **`threat_intel.py`**: Automated Threat Intelligence & IP Geolocation Registry Lookup Tool.
+13. **`portfolio_dashboard.py`**: Master Portfolio Command Center & Verification Dashboard.
+
+---
+
+## Getting Started
+
+Clone the repository and set up your virtual environment:
+
+```bash
+git clone [https://github.com/chifru19/cybersecurity-portfolio.git](https://github.com/chifru19/cybersecurity-portfolio.git)
+cd cybersecurity-portfolio
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
