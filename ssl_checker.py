@@ -1,9 +1,9 @@
+import sys
 import ssl
 import socket
 from datetime import datetime
-import sys
 
-def check_ssl(hostname="github.com", port=443):
+def check_ssl(hostname, port=443):
     print(f"\n[*] Inspecting SSL/TLS certificate for: {hostname}:{port}")
     print("-" * 50)
     try:
@@ -13,10 +13,10 @@ def check_ssl(hostname="github.com", port=443):
                 cert = ssock.getpeercert()
                 print(f"[+] Common Name (CN): {cert.get('subject', ((('commonName',),),))[0][0][1]}")
                 print(f"[+] Issuer: {dict(x[0] for x in cert.get('issuer', []))}")
-                
+
                 expiry_date = datetime.strptime(cert["notAfter"], "%b %d %H:%M:%S %Y %Z")
                 days_remaining = (expiry_date - datetime.now()).days
-                
+
                 print(f"[+] Expiration Date: {expiry_date}")
                 if days_remaining > 30:
                     print(f"    [SECURE] Certificate is valid for another {days_remaining} days.")
