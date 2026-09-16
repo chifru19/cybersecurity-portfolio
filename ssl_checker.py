@@ -1,7 +1,7 @@
 import socket
 import ssl
 import sys
-import datetime
+from datetime import datetime
 
 def check_ssl_certificate(hostname, port=443):
     print(f"\n[*] Inspecting SSL/TLS certificate for: {hostname}:{port}\n" + "-"*50)
@@ -22,7 +22,7 @@ def check_ssl_certificate(hostname, port=443):
                 
                 # Parse expiration date
                 expiry_date = datetime.strptime(not_after_str, '%b %d %H:%M:%S %Y %Z')
-    days_remaining = (expiry_date - datetime.datetime.now(datetime.timezone.utc)).days
+    days_remaining = (expiry_date - datetime.now()).days
                 
                 print(f"[+] Expiration Date: {expiry_date}")
                 
