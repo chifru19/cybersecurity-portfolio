@@ -1,5 +1,6 @@
 import os
 import subprocess
+import urllib.parse
 import streamlit as st
 
 st.set_page_config(
@@ -11,24 +12,32 @@ st.markdown("Interactive security operations command center tracking 13 Python t
 
 # Live SecOps Execution Sandbox Drawer
 st.sidebar.header("⚡ Live SecOps Sandbox")
-target_url = st.sidebar.text_input("Target Domain / URL", "https://frankfru.com")
+raw_target = st.sidebar.text_input("Target Domain / URL", "https://frankfru.com")
+
+# Clean target to hostname/domain for network/IP tools, keep full URL for web app scanner
+parsed = urllib.parse.urlparse(raw_target if "://" in raw_target else f"https://{raw_target}")
+clean_domain = parsed.hostname or raw_target.strip("/")
+
 tool_choice = st.sidebar.selectbox(
     "Select Tool", 
-    ["scanner.py", "ssl_checker.py", "port_scanner.py", "threat_intel.py"]
+    ["scanner.py", "ssl_checker.py", "port_scanner.py", "threat_intel.py", "subdomain_scanner.py", "s3_auditor.py"]
 )
 
+# Decide target arg variant per tool
+target_arg = raw_target if tool_choice == "scanner.py" else clean_domain
+
 if st.sidebar.button("Run Live Audit"):
-    with st.spinner(f"Running `{tool_choice}` against `{target_url}`..."):
+    with st.spinner(f"Running `{tool_choice} {target_arg}`..."):
         try:
             res = subprocess.run(
-                ["python3", tool_choice, target_url], 
-                capture_output=True, text=True, timeout=10
+                ["python3", tool_choice, target_arg], 
+                capture_output=True, text=True, timeout=12
             )
             out = res.stdout if res.stdout else res.stderr
-            st.subheader(f"Live Output: `{tool_choice} {target_url}`")
+            st.subheader(f"Live Output: `{tool_choice} {target_arg}`")
             st.code(out, language="bash")
         except subprocess.TimeoutExpired:
-            st.error("Execution timed out (10s limit exceeded).")
+            st.error("Execution timed out (12s limit exceeded).")
         except Exception as e:
             st.error(f"Execution failed: {e}")
 
