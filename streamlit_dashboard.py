@@ -1,4 +1,5 @@
 import os
+import subprocess
 import streamlit as st
 
 st.set_page_config(
@@ -7,6 +8,32 @@ st.set_page_config(
 
 st.title("🛡️ Frank Fru - Cybersecurity Portfolio Dashboard")
 st.markdown("Interactive security operations command center tracking 13 Python tools.")
+
+# Live SecOps Execution Sandbox Drawer
+st.sidebar.header("⚡ Live SecOps Sandbox")
+target_url = st.sidebar.text_input("Target Domain / URL", "https://frankfru.com")
+tool_choice = st.sidebar.selectbox(
+    "Select Tool", 
+    ["scanner.py", "ssl_checker.py", "port_scanner.py", "threat_intel.py"]
+)
+
+if st.sidebar.button("Run Live Audit"):
+    with st.spinner(f"Running `{tool_choice}` against `{target_url}`..."):
+        try:
+            res = subprocess.run(
+                ["python3", tool_choice, target_url], 
+                capture_output=True, text=True, timeout=10
+            )
+            out = res.stdout if res.stdout else res.stderr
+            st.subheader(f"Live Output: `{tool_choice} {target_url}`")
+            st.code(out, language="bash")
+        except subprocess.TimeoutExpired:
+            st.error("Execution timed out (10s limit exceeded).")
+        except Exception as e:
+            st.error(f"Execution failed: {e}")
+
+st.markdown("---")
+st.subheader("📁 13-Module Security Inventory")
 
 projects = [
     ("Project 1", "scanner.py", "Web App Vulnerability Scanner (Headers & Exposed Files)"),
@@ -36,6 +63,7 @@ for pid, fname, desc in projects:
         else:
             st.warning("MISSING")
 
+st.sidebar.markdown("---")
 st.sidebar.header("Status Summary")
 st.sidebar.metric("Active Projects", f"{completed}/13")
 st.sidebar.success("CI/CD Pipeline: Passing ✅")
