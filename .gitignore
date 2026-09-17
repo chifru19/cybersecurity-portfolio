@@ -4,3 +4,8 @@ venv/
 __pycache__/
 .DS_Store
 sast_report.log
+
+full_audit_output.log
+sample_access.log
+test_app.py
+sast_report.log
